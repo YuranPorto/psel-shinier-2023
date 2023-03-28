@@ -25,21 +25,19 @@
         private $connection;
 
         /**
-         * Define a tabela e instancia a conexão
-         * @param string
+         * Método responsável por estabelecer a conexão com o banco de dados
          */
-
-        // public function __construct($table)
-        // {
-        //     $this->table = $table;
-        //     $this->setConnection();
-        // }
 
         function setConnection(){
             try{
+                // Cria uma nova conexão com o banco de dados
                 $this->connection = new PDO(self::DNS_CON, self::USER_NAME, self::DB_PASSWORD);
+
+                 // Define o modo de erro para o modo de exceção
                 $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }catch(PDOException $e){
+                
+                 // Caso ocorra algum erro ao conectar, exibe a mensagem de erro e encerra a execução do script
                 die('ERROR: '.$e->getMessage());
             }
         }
@@ -61,31 +59,6 @@
             }catch(PDOException $e){
                 die('ERROR: '.$e->getMessage());
             }
-        }
-
-        function buscarNomePorCpf(){
-            // ... CODE
-        }
-
-        public function verificaView($nameView, $pdo){
-            try {
-                $query = "SELECT * FROM $nameView";
-                $pdo->query($query);
-                echo 'Consulta concluida';
-                return true;
-            } catch (PDOException $e) {
-                echo 'View não existe <br>' .$e;
-                self::createFinanceiroView();
-                return false;
-            }
-        }
-
-        function createFinanceiroView(){
-            // ...CODE
-        }
-
-        function buscaDadosFinanceiroView(){
-            // ... CODE
         }
     }
 
