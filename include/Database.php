@@ -1,8 +1,5 @@
 <?php 
 
-    use PDO;
-    use PDOException;
-
 
     class Database{
         // Informações para conexão com o banco de dados:
@@ -17,18 +14,21 @@
          * Define o nome da tabela a ser manipulada
          * @var string
          */
+
         private $table;
 
         /**
          * Instancia de PDO, para conectar a base de dados
          * @var PDO
          */
+        
         private $connection;
 
         /**
          * Define a tabela e instancia a conexão
          * @param string
          */
+
         public function __construct($table)
         {
             $this->table = $table;
@@ -52,6 +52,7 @@
          *
          * @return PDOStatement
          */
+
         public function execute($query, $params = []){
             try{
                 $statement = $this->connection->prepare($query);
@@ -62,4 +63,16 @@
             }
         }
 
+        function buscarNomePorCpf(){
+            // ... CODE
+        }
+
+        function createFinanceiroView(){
+            // ...CODE
+        }
+
+        function buscaDadosFinanceiroView(){
+            // ... CODE
+        }
     }
+
