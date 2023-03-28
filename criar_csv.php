@@ -9,7 +9,7 @@
       
         // Exibe os dados da view na tela
         echo "<table>";
-        echo "<tr><th>Nome</th><th>CPF/CNPJ</th><th>CPF/CNPJ</th><th>Documento</th><th>Emissão</th><th>Vencimento</th><th>Data de Pagamento</th><th>Tipo de Pagamento</th><th>ID Forma de Pagamento</th><th>Valor Pago</th><th>Data de Pagamento da Baixa</th></tr>";
+        echo "<tr><th>Nome</th><th>CPF/CNPJ</th><th>Documento</th><th>Emissão</th><th>Vencimento</th><th>Data de Pagamento</th><th>ID Forma de Pagamento</th><th>Valor Pago</th><th>Data de Pagamento da Baixa</th></tr>";
         foreach ($result as $row) {
           echo "<tr>";
           echo "<td>{$row['NOME']}</td>";
@@ -18,7 +18,6 @@
           echo "<td>{$row['EMISSAO']}</td>";
           echo "<td>{$row['VENCTO']}</td>";
           echo "<td>{$row['DATA_PAGTO']}</td>";
-          echo "<td>{$row['ID_FORMA_PAGAMENTO']}</td>";
           echo "<td>{$row['ID_FORMA_PAGAMENTO']}</td>";
           echo "<td>{$row['VALOR_PAGO']}</td>";
           echo "<td>{$row['DATA_BAIXA']}</td>";
