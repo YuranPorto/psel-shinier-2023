@@ -29,13 +29,13 @@
          * @param string
          */
 
-        public function __construct($table)
-        {
-            $this->table = $table;
-            $this->setConnection();
-        }
+        // public function __construct($table)
+        // {
+        //     $this->table = $table;
+        //     $this->setConnection();
+        // }
 
-        private function setConnection(){
+        function setConnection(){
             try{
                 $this->connection = new PDO(self::DNS_CON, self::USER_NAME, self::DB_PASSWORD);
                 $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -65,6 +65,19 @@
 
         function buscarNomePorCpf(){
             // ... CODE
+        }
+
+        public function verificaView($nameView, $pdo){
+            try {
+                $query = "SELECT * FROM $nameView";
+                $pdo->query($query);
+                echo 'Consulta concluida';
+                return true;
+            } catch (PDOException $e) {
+                echo 'View não existe <br>' .$e;
+                self::createFinanceiroView();
+                return false;
+            }
         }
 
         function createFinanceiroView(){
