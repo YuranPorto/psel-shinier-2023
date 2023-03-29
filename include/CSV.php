@@ -77,7 +77,6 @@
 
                 // FECHA O ARQUIVO
                 fclose($csv);
-
                 return true;
          }
     }
