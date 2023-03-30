@@ -72,7 +72,10 @@
 
                 // CRIA O CORPO DO CSV
                 foreach($dados as $linha){
-                    fputs($csv, implode($delimitador, $linha) . PHP_EOL);
+                    $linhaString = array_map(function($valor){
+                        return strval($valor); // Convertendo valor para string
+                    }, $linha);
+                    fputs($csv, implode($delimitador, $linhaString) . PHP_EOL);
                 }
 
                 // FECHA O ARQUIVO
