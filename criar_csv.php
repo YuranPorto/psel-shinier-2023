@@ -5,20 +5,7 @@
   $obDatabase = new Database;
   $obDatabase-> setConnection();
 
-  $query = "SELECT 
-    NOME,
-    CGC_CPF, 
-    CLIENTE, 
-    INSC_RG,
-    ESTADO,
-    DT_ULTMOV,
-    VR_LIMITE,
-    NUM_ENDERECO,
-    FONE1
-    FROM EMD101
-    ORDER BY NOME
-    FETCH FIRST 5 ROWS ONLY
-    ";
+  $query = file_get_contents(__DIR__.'/SQL/DB');
 
   $statement = $obDatabase->execute($query);
   $resultados = $statement->FetchAll(PDO::FETCH_ASSOC);
@@ -29,16 +16,16 @@
   // Itera cada item da tabalea, e adiciona em um array na variavel corpoCsv
   foreach ($resultados as $resultado){
     $pegarDados = [
+      '',
       $resultado['NOME'],
-      $resultado['CGC_CPF'],
-      $resultado['CLIENTE'],
-      $resultado['INSC_RG'],
-      $resultado['ESTADO'],
-      $resultado['DT_ULTMOV'],
-      $resultado['ESTADO'],
-      $resultado['VR_LIMITE'],
-      $resultado['NUM_ENDERECO'],
-      $resultado['FONE1']
+      $resultado['DOCUMENTO'],
+      'Dinheiro',
+      $resultado['A_PAGAR'],
+      $resultado['PAGO'],
+      $resultado['DATA_LANCAMENTO'],
+      $resultado['VENCIMENTO'],
+      $resultado['CONFIRMA_PAGAMENTO'],
+      $resultado['DT_RECEBIDO']
     ];
 
       $corpoCsv[] = $pegarDados;
