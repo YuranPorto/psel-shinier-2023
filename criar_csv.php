@@ -47,7 +47,7 @@
   // Junta os dados do cabeçalho, com os dados:
   $dados = array_merge(array($cabecalhoCsv), $corpoCsv);
 
-  $sucesso = CSV::criarCsv(__DIR__.'/files/base-cria.csv', $dados, ';');
+  $sucesso = CSV::criarCsv(__DIR__.'/files/financeiro.csv', $dados, ';');
   var_dump($sucesso);
 
 ?>
