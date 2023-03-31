@@ -1,54 +1,6 @@
-<?php
+    <?php
 
     class CSV{
-
-        /**
-         * Método responsavel por ler um arquivo csv e retornar um array de dados
-         *
-         * @param string $arquivo
-         * @param boolean $cabeçalho
-         * @param string $delimitador
-         * 
-         * echo '<pre>'; print_r(); echo '</pre>'; exit;
-         *
-         * @return array
-         */
-
-        public static function lerCsv($arquivo, $cabecalho = true, $delimitador=';'){
-
-            // VERIFICANDO EXISTENCIA DO ARQUIVO
-            if(!file_exists($arquivo)){
-                die("\nArquivo não encontrado\n");
-            }
-
-            // DADOS DAS LINHAS DO ARQUIVO
-            $dados = [];
-
-            // ABRE O ARQUIVO
-            $csv = fopen($arquivo, 'r');
-
-            // DADOS DO CABEÇALHO
-
-            if($cabecalho){
-                $dadosCabecalho = fgetcsv($csv, 0, $delimitador);
-     
-            }else{
-                $dadosCabecalho = [];
-            }
-
-            // Lendo todas as linhas do arquivo
-            while ($linha = fgetcsv($csv, 0, $delimitador)){
-                if($cabecalho){
-                    $dados[] = array_combine($dadosCabecalho, $linha);
-                }else {
-                    $dados[] = $linha;
-                }
-            }
-            // FECHA O ARQUIVO
-            fclose($csv);
-
-            return $dados;
-        }
 
         /**
          * Método responsavel por criar um arquivo csv
@@ -62,25 +14,31 @@
          * @return boolean
          */
 
-         public static function criarCsv($arquivo, $dados, $delimitador=';'){
-               // ABRE ARQUIVO PARA ESCRITA
-                $csv = fopen($arquivo, 'w');
-                
-                if (!$csv) {
-                    return false; // ou lance uma exceção
-                }
+        public static function criarCsv($arquivo, $dados, $delimitador=';'){
+        // ABRE ARQUIVO PARA ESCRITA
+        $csv = fopen($arquivo, 'w');
+        
+        if (!$csv) {
+            return false; // ou lance uma exceção
+        }
+    
+        // ADICIONA BOM AO ARQUIVO
+        fputs($csv, "\xEF\xBB\xBF");
+    
+        // CRIA O CORPO DO CSV
+        foreach($dados as $linha){
+            $linhaString = array_map(function($valor){
+                // Convertendo valor para string e codificando em UTF-8
+                return mb_convert_encoding($valor, "UTF-8", "ISO-8859-1");
+            }, $linha);
 
-                // CRIA O CORPO DO CSV
-                foreach($dados as $linha){
-                    $linhaString = array_map(function($valor){
-                        return strval($valor); // Convertendo valor para string
-                    }, $linha);
-                    fputs($csv, implode($delimitador, $linhaString) . PHP_EOL);
-                }
-
-                // FECHA O ARQUIVO
-                fclose($csv);
-                return true;
-         }
+            // Junta os dados do array linha, separados pelo delimitador e PHP_EOL para indicar uma quebra de linha entre cada elemento
+            fputs($csv, implode($delimitador, $linhaString) . PHP_EOL);
+        }
+    
+        // FECHA O ARQUIVO
+        fclose($csv);
+        return true;
+        }
     }
 ?>
