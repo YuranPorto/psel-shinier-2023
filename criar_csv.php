@@ -44,10 +44,8 @@
     'Data de recebimento'
   ];
 
-  // Junta os dados do cabeçalho, com os dados:
+  // Junta os dados do cabeçalho, com os dados do banco:
   $dados = array_merge(array($cabecalhoCsv), $corpoCsv);
 
   $sucesso = CSV::criarCsv(__DIR__.'/files/financeiro.csv', $dados, ';');
-  var_dump($sucesso);
-
 ?>
