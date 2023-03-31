@@ -1,3 +1,6 @@
 DataBase
 DataBase/
+vendor
+vendor/
+composer.lock
 .http
