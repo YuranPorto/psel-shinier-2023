@@ -93,7 +93,7 @@ JOIN EMD101 as em ON ma.CNPJ_CPF = em.cgc_cpf
 ### Caso tenha algum problema, veja as instruções da documentação https://github.com/PHPOffice/PhpSpreadsheet.
 ### Verifique seu arquivo php.ini se a sua extenção ext-dg  e extension=zip estão ativas.
 ### Para isso, abra seu php.ini e procure pela extenção extension=dg e extension=zip, ambas, ou alaguma delas tiver 
-### com um ; na frente basta remove-lo assim como é necessário para ativar a instenção pdo_firebird.
+### com um ; na frente basta remove-lo assim, como é necessário para ativar a instenção pdo_firebird.
 ### No terminal execute o comando composer instal.
 
 <br><hr>
