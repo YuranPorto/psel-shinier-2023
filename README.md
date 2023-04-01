@@ -163,8 +163,8 @@ CSV::criarCsv('caminho/para/o/novo-arquivo.csv', $dados);
 
 #### **execute($query, $params = [])**
 #### O método execute() é responsável por executar uma consulta SQL no banco de dados utilizando a conexão estabelecida pelo método setConnection(). 
-#### O parâmetro $query deve ser uma string #### string contendo a consulta SQL a ser executada. O parâmetro $params é opcional e deve ser um array 
-#### contendo os valores a serem substituídos nos parâmetros da consulta SQL. Caso #### ocorra algum erro durante a execução da consulta, 
+#### O parâmetro $query deve ser uma string contendo a consulta SQL a ser executada. O parâmetro $params é opcional e deve ser um array 
+#### contendo os valores a serem substituídos nos parâmetros da consulta SQL. Caso ocorra algum erro durante a execução da consulta, 
 #### uma exceção é lançada com a mensagem de erro correspondente.
 <br>
 
