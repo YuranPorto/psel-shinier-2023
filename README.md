@@ -169,3 +169,15 @@ CSV::criarCsv('caminho/para/o/novo-arquivo.csv', $dados);
 <br>
 
 #### O método retorna um objeto PDOStatement que contém os resultados da consulta executada.
+<br>
+<blockquote>
+  Observações:
+  
+  <blockquote>
+  Gostaria de agradecer a Shinier pela oportunidade de me desafiar e aprender com exemplos de práticas reais de dentro de uma empresa
+  Essa semana foi muito desafiadora, e aprendi muito com esse pouco tempo.
+  após o termino da semana tabém fiz uma versão do projeto usando python, claro, que foi muito mais facil após realizar o desafio, então consegui re-faze-lo sem ocupar muito tempo.
+    https://github.com/YuranPorto/psel-shinier-2023-python-version/tree/master
+  
+</blockquote>
+</blockquote>
